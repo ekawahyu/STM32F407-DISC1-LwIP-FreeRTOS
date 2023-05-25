@@ -369,7 +369,15 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+void configureTimerForRunTimeStats(void)
+{
+  /* nothing to configure here, we use uwTick */
+}
+ 
+unsigned long getRunTimeCounterValue(void)
+{
+	return uwTick;
+}
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_StartDefaultTask */
