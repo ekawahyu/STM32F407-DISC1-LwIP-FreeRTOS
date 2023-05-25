@@ -30,7 +30,7 @@
 
 /* Within 'USER CODE' section, code will be kept by default at each generation */
 /* USER CODE BEGIN 0 */
-
+#define LWIP_DEBUG 1
 /* USER CODE END 0 */
 
 #ifdef __cplusplus
@@ -111,6 +111,10 @@
 #define CHECKSUM_CHECK_ICMP 0
 /*----- Value in opt.h for CHECKSUM_CHECK_ICMP6: 1 -----*/
 #define CHECKSUM_CHECK_ICMP6 0
+/*----- Default Value for ICMP_DEBUG: LWIP_DBG_OFF ---*/
+#define ICMP_DEBUG LWIP_DBG_ON
+/*----- Default Value for DHCP_DEBUG: LWIP_DBG_OFF ---*/
+#define DHCP_DEBUG LWIP_DBG_ON
 /*-----------------------------------------------------------------------------*/
 /* USER CODE BEGIN 1 */
 
