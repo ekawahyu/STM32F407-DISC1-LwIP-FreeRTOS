@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/STM32F407-DISC1-LwIP-FreeRTOS.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "stlink",
+            "device": "STM32F407VG",
+            "svdFile": "STM32F407.svd",
+        },
+        {
+            "name": "Attach",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/STM32F407-DISC1-LwIP-FreeRTOS.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "stlink",
+            "device": "STM32F407VG",
+            "svdFile": "STM32F407.svd",
+        }
+    ]
+}
