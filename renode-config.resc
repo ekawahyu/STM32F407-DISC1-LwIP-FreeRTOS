@@ -1,0 +1,36 @@
+# Create machine and load config
+mach create
+machine LoadPlatformDescription @stm32f4disco.repl
+
+# Create socket terminal for USART3 over telnet
+emulation CreateServerSocketTerminal 3456 "console"
+connector Connect sysbus.usart3 console
+
+# Create networking
+emulation CreateSwitch "switch1"
+emulation CreateTap "tap0" "tap"
+connector Connect host.tap switch1
+connector Connect sysbus.ethernet switch1
+
+# Create a terminal window showing the output of USART3
+showAnalyzer sysbus.usart3
+
+# Start GDB Server on port 3333
+machine StartGdbServer 3333
+
+# Show noisy log on LEDs
+logLevel -1 sysbus.gpioPortD.LD3
+logLevel -1 sysbus.gpioPortD.LD4
+logLevel -1 sysbus.gpioPortD.LD5
+logLevel -1 sysbus.gpioPortD.LD6
+
+# Show noisy log on ethernet
+logLevel -1 sysbus.ethernet
+
+# Load symbols
+macro reset
+"""
+    sysbus LoadELF $bin
+"""
+
+runMacro $reset

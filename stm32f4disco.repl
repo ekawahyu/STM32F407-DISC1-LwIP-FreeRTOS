@@ -1,0 +1,25 @@
+using "platforms/cpus/stm32f4.repl"
+using "platforms/boards/stm32f4_discovery-bb.repl"
+
+UserButton: Miscellaneous.Button @ gpioPortA
+    -> gpioPortA@0
+
+LD3: Miscellaneous.LED @ gpioPortD
+
+gpioPortD:
+    13 -> LD3@0
+
+LD4: Miscellaneous.LED @ gpioPortD
+
+gpioPortD:
+    12 -> LD4@0
+
+LD5: Miscellaneous.LED @ gpioPortD
+
+gpioPortD:
+    14 -> LD5@0
+
+LD6: Miscellaneous.LED @ gpioPortD
+
+gpioPortD:
+    15 -> LD6@0

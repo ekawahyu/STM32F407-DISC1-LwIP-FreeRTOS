@@ -15,6 +15,16 @@
 ######################################
 TARGET = STM32F407-DISC1-LwIP-FreeRTOS
 
+######################################
+# Renode
+######################################
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S), Linux)
+	RENODE = renode
+endif
+ifeq ($(UNAME_S), Darwin)
+	RENODE = /Applications/Renode.app/Contents/MacOS/macos_run.command
+endif
 
 ######################################
 # building variables
@@ -266,6 +276,9 @@ LDFLAGS = $(MCU) -specs=nano.specs -T$(LDSCRIPT) $(LIBDIR) $(LIBS) -Wl,-Map=$(BU
 # default action: build all
 all: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
 
+# build renode
+renode: all
+	$(RENODE) -e '$$bin=@$(BUILD_DIR)/$(TARGET).elf; include @renode-config.resc'
 
 #######################################
 # build the application
