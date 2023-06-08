@@ -22,6 +22,20 @@
             "servertype": "stlink",
             "device": "STM32F407VG",
             "svdFile": "STM32F407.svd",
+        },
+        {
+            "name": "Debug Renode",
+            "cwd": "${workspaceFolder}",
+            "executable": "build/STM32F407-DISC1-LwIP-FreeRTOS.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "runToEntryPoint": "main",
+            "servertype": "external",
+            "gdbTarget": "localhost:3333",
+            "preLaunchCommands":[
+                "symbol-file build/STM32F407-DISC1-LwIP-FreeRTOS.elf",
+                "monitor start"
+              ]
         }
     ]
 }
